@@ -5,4 +5,6 @@
     <string name="navigate_to_fragment2">navigate to fragment 2</string>
     <string name="message_from_fragment1">Message from fragment 1</string>
     <string name="navigate_to_fragment3">navigate to fragment 3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

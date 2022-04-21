@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.navigationcomponent.databinding.FragmentFirstBinding
 import com.example.navigationcomponent.databinding.FragmentSecondBinding
 
@@ -18,17 +19,17 @@ class SecondFragment : Fragment() {
     private lateinit var binding: FragmentSecondBinding
     private var messid: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            messid = it.getString(MESS)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+       //messid=arguments?.getString("mess")
+
+        val safeArgs: SecondFragmentArgs by navArgs()
+        messid = safeArgs.mess
+
         binding = FragmentSecondBinding.inflate(inflater, container, false)
         val view = binding.root
         return view

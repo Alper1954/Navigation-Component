@@ -1,12 +1,10 @@
 package com.example.navigationcomponent
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.Navigation
+import android.util.Log
+import android.view.*
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.navigationcomponent.databinding.FragmentFirstBinding
 
 class FirstFragment : androidx.fragment.app.Fragment() {
@@ -17,9 +15,9 @@ class FirstFragment : androidx.fragment.app.Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentFirstBinding.inflate(inflater, container, false)
         val view = binding.root
+        setHasOptionsMenu(true)
         return view
     }
 
@@ -28,9 +26,18 @@ class FirstFragment : androidx.fragment.app.Fragment() {
 
         val button = binding.navigateToFrag2
         button.setOnClickListener {
-            // Navigate using that action
             val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(mess = textEdit.text.toString())
             it.findNavController().navigate(action)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
+                || super.onOptionsItemSelected(item)
     }
 }
