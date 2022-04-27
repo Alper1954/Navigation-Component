@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+
         drawerLayout = binding.drawerLayout
 
         val navHostFragment = supportFragmentManager
